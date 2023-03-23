@@ -1,14 +1,17 @@
 <?php
-	// get the hours and rate from the textfields
-	$base = $_POST['hours'];
-	$height = $_POST['rate'];
+// declare constant
+define("TAX_RATE", 0.2005);
+	
+  // get the hours and rate from the textfields
+	$hours = $_POST['hours'];
+	$rate = $_POST['rate'];
 
-const TAX_RATE = 0.2005
-  
 	// calculate the area
-	$totalPay = $hours * $rate
-  $tax = $totalPay * $TAX_RATE
+	$totalPay = $hours * $rate;
+  $tax = $totalPay *TAX_RATE;
   $takeHomeSalary = $totalPay - $tax
 ?>
-<h3>Results:</h3>
-After taxes, your take home salary is $ <?php echo "$takeHomeSalary" ?>.
+<?php echo "<h3>Results:</h3>
+  After taxes, your take home salary is $" . round($takeHomeSalary, 2) . 
+  "<br>Amount of tax the government takes is $" . round($tax, 2) 
+  ?>
